@@ -163,3 +163,9 @@ extension JSON: ExpressibleByIntegerLiteral {
     self = .number(Double(value))
   }
 }
+
+extension JSON: ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Bool) {
+    self = .bool(value)
+  }
+}
