@@ -31,4 +31,24 @@ final class JSONTests: XCTestCase {
 
     XCTAssertEqual(json.objectValue, [:])
   }
+
+  func test_JSON_FormattedString() {
+    var json: JSON = 1
+    XCTAssertEqual(json.formatted(), "1")
+
+    json = [1, 2]
+    XCTAssertEqual(json.formatted(), "[1,2]")
+
+    json = ["id": "deadbeef"]
+    XCTAssertEqual(json.formatted(), "{\"id\":\"deadbeef\"}")
+
+    json = true
+    XCTAssertEqual(json.formatted(), "true")
+
+    json = nil
+    XCTAssertEqual(json.formatted(), "null")
+
+    json = "deadbeef"
+    XCTAssertEqual(json.formatted(), "\"deadbeef\"")
+  }
 }

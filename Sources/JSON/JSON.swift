@@ -169,3 +169,19 @@ extension JSON: ExpressibleByBooleanLiteral {
     self = .bool(value)
   }
 }
+
+extension JSON {
+  /// Returns a JSON formatted string.
+  /// - Parameter options: Formatting options, for example `[.prettyPrinted, .sortedKeys]`.
+  /// - Returns: JSON string.
+  public func formatted(options: JSONEncoder.OutputFormatting = []) -> String {
+    do {
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = options
+      let data = try encoder.encode(self)
+      return String(data: data, encoding: .utf8) ?? ""
+    } catch {
+      return ""
+    }
+  }
+}
